@@ -1,11 +1,10 @@
-import "./style.css";
+import React, { useState } from "react";
+import { render } from "react-dom";
 
-console.log("Hello webpack")
+function App() {
+    const [state, setState] = useState("CLICK ME");
 
-const arrowFunc = () => {
-  return [1, 2]
+    return <button onClick={() => setState("CLICKED")}>{state}</button>;
 }
 
-const [a, b] = arrowFunc()
-
-console.log(a, b)
+render(<App />, document.getElementById("root"));
