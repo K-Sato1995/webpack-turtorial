@@ -12,7 +12,7 @@ jobs:
       - name: check files
         run: ls -a
       - name: custom_workflow_step
-        uses: K-Sato1995/gh-actions-test@v3.1
+        uses: K-Sato1995/gh-actions-example@v1.0
         with:
           configPath: "webpack.config"
     env:
