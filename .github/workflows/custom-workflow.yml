@@ -18,7 +18,7 @@ jobs:
         with:
           name: 'custom name'
           message: "Message"
-          configPath: "./webpack.config"
+          configPath: "webpack.config"
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
