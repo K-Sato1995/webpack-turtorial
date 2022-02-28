@@ -1,4 +1,4 @@
-process.env.NODE_ENV = 'production'
+// process.env.NODE_ENV = 'production'
 const webpack = require('webpack')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
@@ -11,8 +11,14 @@ webpackConfigProd.plugins.push(
 )
 
 // actually running compilation and waiting for plugin to start explorer
-webpack(webpackConfigProd, (err, stats) => {
+const compiler = webpack(webpackConfigProd)
+compiler.run((err, stats) => { // [Stats Object](#stats-object)
+  // console.log(stats)
+
   if (err || stats.hasErrors()) {
-    console.error(err)
+    console.log(err)
   }
-})
+  compiler.close((closeErr) => {
+    console.log(closeErr)
+  });
+});
