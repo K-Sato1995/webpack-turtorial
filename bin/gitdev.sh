@@ -1,1 +1,1 @@
-git add . && git commit -am 'tmp' && git push origin development
+git add . && git commit -am 'tmp' && git push origin develop
