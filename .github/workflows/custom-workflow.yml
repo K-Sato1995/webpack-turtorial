@@ -8,7 +8,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: yarn install
-        run: yarn add all
+        run: npm install
       - name: check files
         run: ls -a
       - name: custom_workflow_step
