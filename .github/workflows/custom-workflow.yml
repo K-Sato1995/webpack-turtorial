@@ -12,9 +12,14 @@ jobs:
       - name: check files
         run: ls -a
       - name: custom_workflow_step
-        uses: K-Sato1995/gh-actions-test@v3.7
+        uses: K-Sato1995/gh-actions-test@v3.8
         with:
           configPath: "webpack.config"
+       - name: deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: /analyzeOutput
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         

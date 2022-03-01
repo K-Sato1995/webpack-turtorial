@@ -2,23 +2,33 @@
 const webpack = require('webpack')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
-const webpackConfigProd = require('./webpack.config')
+
+const analyze = async () => {
+  const webpackConfigProd = require('./webpack.config')
+  webpackConfigProd.plugins.push(
+    new BundleAnalyzerPlugin({ analyzerMode: 'static' }),
+  )
+  const compiler = webpack(webpackConfigProd)
+  await build(compiler)
+}
 
 
-// pushing BundleAnalyzerPlugin to plugins array
-webpackConfigProd.plugins.push(
-  new BundleAnalyzerPlugin({ analyzerMode: 'static' }),
-)
+function build(compiler) {
+  return new Promise((resolve, reject) => {
+    compiler.run((err, stats) => { // [Stats Object](#stats-object)
+      compiler.close((closeErr) => {
+        core.info(closeErr)
+        reject(closeErr)
+      });
+    });
 
-// actually running compilation and waiting for plugin to start explorer
-const compiler = webpack(webpackConfigProd)
-compiler.run((err, stats) => { // [Stats Object](#stats-object)
-  // console.log(stats)
-
-  if (err || stats.hasErrors()) {
-    console.log(err)
-  }
-  compiler.close((closeErr) => {
-    console.log(closeErr)
+    compiler.hooks.done.tap('IDoNotUnderstandWhatThisStringIsForButItCannotBeEmpty', () => {
+      resolve('compile finished');
+    });
   });
-});
+}
+
+const asyncFunc = async () => {
+  await analyze()
+}
+asyncFunc()
