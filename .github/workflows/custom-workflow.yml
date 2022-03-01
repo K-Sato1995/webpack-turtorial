@@ -15,7 +15,7 @@ jobs:
         uses: K-Sato1995/gh-actions-test@v3.8
         with:
           configPath: "webpack.config"
-       - name: deploy
+      - name: deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
