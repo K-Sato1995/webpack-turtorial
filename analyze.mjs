@@ -17,7 +17,6 @@ export const analyze = async () => {
         openAnalyzer: false,
         reportFilename: `output/report.html`
     }),
-
     new BundleAnalyzerPlugin.BundleAnalyzerPlugin({
         analyzerMode: 'json',
         openAnalyzer: false,
