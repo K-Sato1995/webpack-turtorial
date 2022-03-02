@@ -11,11 +11,19 @@ export const analyze = async () => {
     if (!webpackConfigProd.plugins) {
         webpackConfigProd['plugins'] = [];
     }
-    webpackConfigProd.plugins.push(new BundleAnalyzerPlugin.BundleAnalyzerPlugin({
+    webpackConfigProd.plugins.push(
+    new BundleAnalyzerPlugin.BundleAnalyzerPlugin({
+        analyzerMode: 'static',
+        openAnalyzer: false,
+        reportFilename: `output/report.html`
+    }),
+
+    new BundleAnalyzerPlugin.BundleAnalyzerPlugin({
         analyzerMode: 'json',
-        openAnalyzer: true,
+        openAnalyzer: false,
         reportFilename: `output/report.json`
-    }));
+    })
+    );
     const compiler = webpack(webpackConfigProd);
     await webpackBuild(compiler);
 };
