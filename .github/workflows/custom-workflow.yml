@@ -10,9 +10,11 @@ jobs:
       - name: yarn install
         run: npm install
       - name: custom_workflow_step
-        uses: K-Sato1995/gh-actions-test@v3.9
+        uses: K-Sato1995/webpack-bundle-analyzer-action@develop
         with:
-          configPath: "webpack.config"
+          webpack-config-path: "webpack.config"
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          report-file-name: "report/index.html"
       - name: check files
         run: ls -a
       - name: deploy
@@ -22,4 +24,3 @@ jobs:
           publish_dir: ./analyzeOutput
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        
