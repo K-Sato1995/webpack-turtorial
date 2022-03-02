@@ -12,9 +12,9 @@ export const analyze = async () => {
         webpackConfigProd['plugins'] = [];
     }
     webpackConfigProd.plugins.push(new BundleAnalyzerPlugin.BundleAnalyzerPlugin({
-        analyzerMode: 'static',
+        analyzerMode: 'json',
         openAnalyzer: true,
-        reportFilename: `report.html`
+        reportFilename: `output/report.json`
     }));
     const compiler = webpack(webpackConfigProd);
     await webpackBuild(compiler);
