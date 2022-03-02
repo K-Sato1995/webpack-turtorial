@@ -1,4 +1,4 @@
-on: [push]
+on: [pull_request]
 
 jobs:
   hello_world_job:
@@ -14,7 +14,6 @@ jobs:
         with:
           webpack-config-path: "webpack.config"
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          report-file-name: "report/index.html"
       - name: check files
         run: ls -a
       - name: deploy
